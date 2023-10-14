@@ -3,6 +3,7 @@ import { signInWithPopup } from "firebase/auth"
 import 'firebase/compat/firestore';
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { collection, doc, setDoc, updateDoc } from "firebase/firestore";
+import { Timestamp } from "firebase/firestore";
 
 export const Auth = () => {
     const signInGoogle = async () => {
@@ -11,22 +12,25 @@ export const Auth = () => {
         const { uid, photoURL, displayName } = auth.currentUser;
 
         const usersRef = collection(db, "users");
-        setDoc(doc(usersRef, uid), {
+        await setDoc(doc(usersRef, uid), {
             name: displayName,
             uid: uid,
             photo: photoURL,
-            isOnline: true
+            isOnline: true,
+            lastOnline: Timestamp.now()
         });
     }
-    const signOutGoogle = async () => {
-        auth.signOut();
 
+    const signOutGoogle = async () => {
         const { uid } = auth.currentUser;
 
         const usersRef = collection(db, "users");
-        updateDoc(doc(usersRef, uid), {
-            isOnline: false
+        await updateDoc(doc(usersRef, uid), {
+            isOnline: false,
+            lastOnline: Timestamp.now()
         })
+
+        auth.signOut();
     }
 
     const [user] = useAuthState(auth);
