@@ -4,11 +4,12 @@ import { useCollectionData } from 'react-firebase-hooks/firestore'
 
 export const UserCardPanel = () => {
     const UserCard = (user) => {
-        const { displayName, email, photoURL, isOnline, lastOnline } = user;
+        const { displayName, email, photoURL, isOnline, lastOnline } = user.user;
+        console.log(photoURL);
         return (
-            <div className="card">
-                <image className="card-img-left" src={photoURL} />
-                <div className="card-body">
+            <div className="card" >
+                <img className="card-img-top inline" referrerPolicy="no-referrer" src={photoURL} />
+                <div className="card-body inline">
                     <div className="card-title">
                         {displayName}
                     </div>
@@ -24,7 +25,7 @@ export const UserCardPanel = () => {
 
     return (
         <div>
-            {users && users.map(user => <UserCard user={user.user} />)}
+            {users && users.map(user => <UserCard user={user} />)}
         </div>
     )
 }
