@@ -1,4 +1,4 @@
-import { getDocs, collection } from "firebase/firestore";
+import { collection } from "firebase/firestore";
 import { db } from "../firebase-config";
 import { useCollectionData } from 'react-firebase-hooks/firestore'
 
@@ -7,16 +7,15 @@ export const UserCardPanel = () => {
         const { displayName, email, photoURL, isOnline, lastOnline } = user.user;
         console.log(photoURL);
         return (
-            <div className="card" >
-                <img className="card-img-top inline" referrerPolicy="no-referrer" src={photoURL} />
-                <div className="card-body inline">
-                    <div className="card-title">
-                        {displayName}
-                    </div>
-                    <div className="card-subtitle">
-                        {email}
-                    </div>
-                </div>
+            <div className="card userCard" >
+                <img className="border border-primary m-2" referrerPolicy="no-referrer" src={photoURL} />
+
+                <span className="card-title text p-0 m-0">
+                    {displayName}
+                </span>
+                <span className="card-subtitle text-muted p-0 mb-2">
+                    {email}
+                </span>
             </div>
         )
     }
@@ -25,6 +24,7 @@ export const UserCardPanel = () => {
 
     return (
         <div>
+            <div className="text text-secondary text-center fs-3 fw-bold">Alle gebruikers</div>
             {users && users.map(user => <UserCard user={user} />)}
         </div>
     )

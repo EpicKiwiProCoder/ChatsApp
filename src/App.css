@@ -1,8 +1,16 @@
 html,body,.container,.full-height {
     height:100vh;
 }
-.card .inline{
-    display: inline;
-    flex-direction: column;
-    flex: 1 1 auto;
+img {
+  border-radius: 50%;
+  display: inline;
+}
+.userCard {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+span {
+  display: inline;
 }

@@ -22,7 +22,7 @@ export const SignIn = () => {
 
     return (
         <div>
-            <p>Log in:</p>
+            <p className="form-label">Log in:</p>
             <button onClick={signInGoogle} className="btn btn-primary btn-large">Inloggen met Google</button>
         </div>
     )
@@ -43,7 +43,7 @@ export const SignOut = () => {
 
     return (
         <div>
-            <p>Log Out:</p>
+            <p className="form-label">Log Out:</p>
             <button onClick={signOutGoogle} className="btn btn-danger btn-large">Uitloggen</button>
         </div>
     )
