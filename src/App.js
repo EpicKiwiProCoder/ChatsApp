@@ -3,13 +3,14 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { SignIn, SignOut } from './components/Auth';
 import { ChatInput } from './components/ChatInput';
 import { auth } from './firebase-config';
+import { UserCardPanel } from './components/UserCardPanel';
 
 function App() {
   const [user] = useAuthState(auth);
 
   if (user) {
     return (
-      <div className="App border" style={{ height: "100%" }}>
+      <div className="App">
 
         <div className="container">
           <div className="row">
@@ -19,21 +20,21 @@ function App() {
                 <SignOut />
               </div>
               <div className="row">
-
+                <UserCardPanel />
               </div>
 
             </div>
-            <div className="col-6">
+            <div className="col-6 border border-primary rounded full-height">
 
-              <div className="row border border-primary rounded">
-                Bericht
+              <div className="row">
+
               </div>
-              <div className="row sticky-bottom m-5">
+              <div className="row p-5">
                 <ChatInput />
               </div>
 
             </div>
-            <div className="col-3 col-outline"></div>
+            <div className="col-3"></div>
           </div>
         </div >
 

@@ -8,12 +8,13 @@ export const SignIn = () => {
     const signInGoogle = async () => {
         await signInWithPopup(auth, provider);
 
-        const { uid, photoURL, displayName } = auth.currentUser;
+        const { uid, photoURL, displayName, email } = auth.currentUser;
 
         const docRef = doc(db, "users", uid);
         await setDoc(docRef, {
-            name: displayName,
-            photo: photoURL,
+            displayName: displayName,
+            photoURL: photoURL,
+            email: email,
             isOnline: true,
             lastOnline: serverTimestamp()
         });
