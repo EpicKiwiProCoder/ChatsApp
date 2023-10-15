@@ -1,10 +1,21 @@
 import { useState } from "react";
+import { db, auth } from "../firebase-config";
+import { collection, serverTimestamp, addDoc } from "firebase/firestore";
 
 export const ChatInput = () => {
-    const SendChat = (event) => {
+    const SendChat = async (event) => {
         event.preventDefault();
-        console.log(chatContent);
-        setChatContent("")
+
+        const { uid } = auth.currentUser;
+
+        const messagesRef = collection(db, "messages");
+        await addDoc(messagesRef, {
+            content: chatContent,
+            userUid: uid,
+            timeSent: serverTimestamp()
+        });
+
+        setChatContent("");
     }
 
     const [chatContent, setChatContent] = useState("");
