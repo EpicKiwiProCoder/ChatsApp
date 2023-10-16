@@ -21,10 +21,7 @@ export const SignIn = () => {
     }
 
     return (
-        <div>
-            <p className="form-label">Log in:</p>
-            <button onClick={signInGoogle} className="btn btn-primary btn-large">Inloggen met Google</button>
-        </div>
+        <button onClick={signInGoogle} className="btn btn-primary btn-lg btn-block w-100 mt-3 mb-3">Inloggen met Google</button>
     )
 }
 
@@ -42,9 +39,6 @@ export const SignOut = () => {
     }
 
     return (
-        <div>
-            <p className="form-label">Log Out:</p>
-            <button onClick={signOutGoogle} className="btn btn-danger btn-large">Uitloggen</button>
-        </div>
+        <button onClick={signOutGoogle} className="btn btn-danger btn-lg w-100 mt-0 mb-3">Uitloggen</button>
     )
 }
