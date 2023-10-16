@@ -14,7 +14,7 @@ function App() {
 
         <div className="container">
           <div className="row">
-            <div className="col-3 border border-secondary rounded">
+            <div className="col-4 border border-secondary rounded">
 
               <div className="row">
                 <SignOut />
@@ -34,7 +34,7 @@ function App() {
               </div>
 
             </div>
-            <div className="col-3"></div>
+            <div className="col-2"></div>
           </div>
         </div >
 

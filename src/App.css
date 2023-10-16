@@ -2,15 +2,13 @@ html,body,.container,.full-height {
     height:100vh;
 }
 img {
-  border-radius: 50%;
-  display: inline;
+    width: 55px;
+    border-radius: 50%;
 }
+
 .userCard {
-  display: flex;
-  align-items: center;
-  margin-top: 10px;
-  margin-bottom: 20px;
-}
-span {
-  display: inline;
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 20px;
 }
