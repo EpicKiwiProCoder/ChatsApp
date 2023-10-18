@@ -6,12 +6,14 @@ export const ChatInput = () => {
     const SendChat = async (event) => {
         event.preventDefault();
 
-        const { uid } = auth.currentUser;
+        const { uid, displayName, photoURL } = auth.currentUser;
 
         const messagesRef = collection(db, "messages");
         await addDoc(messagesRef, {
             content: chatContent,
             userUid: uid,
+            displayName: displayName,
+            photoURL: photoURL,
             timeSent: serverTimestamp()
         });
 
