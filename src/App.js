@@ -25,7 +25,7 @@ function App() {
             <div className="row">
               <ChatPanel />
             </div>
-            <div className="row p-5">
+            <div className="row p-5 fixed-bottom">
               <ChatInput />
             </div>
 

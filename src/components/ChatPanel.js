@@ -1,5 +1,5 @@
 import { useCollectionData } from "react-firebase-hooks/firestore";
-import { collection, doc, getDoc } from "firebase/firestore";
+import { collection, doc, getDoc, query, orderBy } from "firebase/firestore";
 import { db, auth } from "../firebase-config";
 import { timeAgoPhrase } from "./UserCardPanel";
 
@@ -7,43 +7,47 @@ export const ChatPanel = () => {
     const OwnMessage = (message) => {
         const { content, userUid, timeSent, photoURL, displayName } = message.message;
         return (
-            <div className="ownMessage bg-success bg-gradient rounded pt-1 pb-1 ps-2 pe-3">
-                <span>
-                    <p className="text text-left text-white p-0 m-0 chatContent">
-                        {content}
-                    </p>
+            <div className="message ownMessage">
+                <span className="bg-success bg-gradient rounded pt-1 pb-1 ps-3 pe-2">
+                    <span>
+                        <p className="text text-left text-white m-0">
+                            {content}
+                        </p>
+                    </span>
+                    <img className="ms-3" referrerPolicy="no-referrer" src={photoURL} />
                 </span>
-                <img className="messageImg ms-3" referrerPolicy="no-referrer" src={photoURL} />
             </div>
         )
     }
     const OtherMessage = (message) => {
         const { content, userUid, timeSent, photoURL, displayName } = message.message;
         return (
-            <div className="otherMessage bg-secondary bg-gradient rounded pt-1 pb-1 ps-2 pe-3 ">
-                <img className="messageImg me-3" referrerPolicy="no-referrer" src={photoURL} />
-                <span>
-                    <p className="text text-white fw-bold p-0 m-0">
-                        {displayName + ":"}
-                    </p>
-                    <p className="text text-white p-0 m-0 chatContent">
-                        {content}
-                    </p>
+            <div className="message otherMessage">
+                <span className="bg-secondary bg-gradient rounded pt-1 pb-1 ps-2 pe-3">
+                    <img className="me-3" referrerPolicy="no-referrer" src={photoURL} />
+                    <span>
+                        <p className="text text-white p-0 m-0 nameBadge">
+                            {displayName + ":"}
+                        </p>
+                        <p className="text text-white p-0 m-0">
+                            {content}
+                        </p>
+                    </span>
                 </span>
             </div>
         )
     }
 
-    const [messages] = useCollectionData(collection(db, "messages"));
+    const [messages] = useCollectionData(query(collection(db, "messages"), orderBy("timeSent")));
     const currentUser = auth.currentUser;
 
     return (
-        <div>
+        <div className="p-0">
             {messages && messages.map((message) => {
                 if (currentUser && message.userUid == currentUser.uid) {
-                    return <div className="messageWrapper"><OwnMessage message={message} /></div>
+                    return <OwnMessage message={message} />
                 } else {
-                    return <div className="messageWrapper"><OtherMessage message={message} /></div>
+                    return <OtherMessage message={message} />
                 }
             })}
         </div>

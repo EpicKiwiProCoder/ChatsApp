@@ -1,25 +1,34 @@
 html,body,.container,.full-height {
     height:100vh;
 }
-.messageWrapper {
-    width: 100%;
-    flex-basis: 100%;
+
+.ownMessage{
+    display:flex;
+    justify-content: right;
 }
-.ownMessage {
-    display: flex;
-    align-items: center;
-    float:right;
-    width: 100%;
+.ownMessage > span > span > p {
+    padding-top: 9px;
+} 
+.otherMessage{
+    display:flex;
+    justify-content: left;
 }
-.otherMessage {
-    display: flex;
-    align-items: center;
-    float:left;
-    
+.message > span{
+    margin: 5px 20px 5px 20px;
 }
-.messageImg {
-    width: 35px;
+.message > span > img {
+    width: 42px;
     border-radius: 50%;
+    vertical-align: top;
+}
+.message > span > span {
+    display:inline-block;
+}
+.nameBadge {
+    font-weight:700;
+    font-size: small;
+    margin:0;
+    padding:0;
 }
 
 

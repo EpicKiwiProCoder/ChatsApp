@@ -6,6 +6,11 @@ export const ChatInput = () => {
     const SendChat = async (event) => {
         event.preventDefault();
 
+        if (!auth.currentUser) {
+            alert("Log eerst in voordat je een bericht kunt versturen");
+            return;
+        }
+
         const { uid, displayName, photoURL } = auth.currentUser;
 
         const messagesRef = collection(db, "messages");
@@ -30,7 +35,7 @@ export const ChatInput = () => {
                     className="form-control" placeholder="Stuur een bericht" required
                 />
                 <div className="input-group-append">
-                    <input type="submit" className="btn btn-outline-primary"
+                    <input type="submit" className={"btn btn-lg " + (auth.currentUser ? "btn-outline-primary" : "btn-outline-danger")}
                         value="Versturen"
                         style={{ borderTopLeftRadius: "0px", borderBottomLeftRadius: "0px" }}
                     />
