@@ -1,9 +1,9 @@
 import './App.css';
 
-import { ChatInput } from './components/ChatInput';
-import { UserCardPanel } from './components/UserCardPanel';
-import { ChatPanel } from './components/ChatPanel'
-import { Navbar } from './components/Navbar';
+import { ChatInput } from '../components/ChatInput';
+import { UserCardPanel } from '../components/UserCardPanel';
+import { ChatPanel } from '../components/ChatPanel'
+import { Navbar } from '../components/Navbar';
 
 function App() {
   return (

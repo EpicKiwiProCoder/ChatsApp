@@ -5,7 +5,7 @@
   },
   "hosting": {
     "site": "chatsapp-web",
-    "public": "public",
+    "public": "build",
     "ignore": [
       "firebase.json",
       "**/.*",

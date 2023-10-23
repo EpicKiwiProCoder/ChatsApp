@@ -1,6 +1,6 @@
 import { useCollectionData } from "react-firebase-hooks/firestore";
 import { collection, doc, getDoc, query, orderBy } from "firebase/firestore";
-import { db, auth } from "../firebase-config";
+import { db, auth } from "./firebaseConfig";
 import { timeAgoPhrase } from "./UserCardPanel";
 
 export const ChatPanel = () => {

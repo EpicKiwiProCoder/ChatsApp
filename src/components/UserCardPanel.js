@@ -1,5 +1,5 @@
 import { collection } from "firebase/firestore";
-import { db, auth } from "../firebase-config";
+import { db, auth } from "./firebaseConfig";
 import { useCollectionData } from 'react-firebase-hooks/firestore'
 import { Timestamp } from "firebase/firestore";
 import { SignOut, SignIn } from "./Auth";

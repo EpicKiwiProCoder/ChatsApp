@@ -1,4 +1,4 @@
-import { auth, provider, db } from "../firebase-config.js"
+import { auth, provider, db } from "./firebaseConfig.js"
 import { signInWithPopup } from "firebase/auth"
 import 'firebase/compat/firestore';
 import { doc, setDoc, updateDoc } from "firebase/firestore";

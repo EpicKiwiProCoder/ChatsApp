@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { db, auth } from "../firebase-config";
+import { db, auth } from "./firebaseConfig";
 import { collection, serverTimestamp, addDoc } from "firebase/firestore";
 
 export const ChatInput = () => {
