@@ -1,21 +1,21 @@
 import { collection } from "firebase/firestore";
-import { db, auth } from "./firebaseConfig";
+import { db, auth } from "./FirebaseConfig";
 import { useCollectionData } from 'react-firebase-hooks/firestore'
+import { useAuthState } from "react-firebase-hooks/auth";
 import { Timestamp } from "firebase/firestore";
 import { SignOut, SignIn } from "./Auth";
-import { useState } from "react";
 
 export const timeAgoPhrase = (lastOnline) => {
     try {
         const secondsSince = Timestamp.now().seconds - lastOnline.seconds;
         if (secondsSince < 3600) {
             const unitsAgo = Math.floor(secondsSince / 60);
-            return String(unitsAgo) + (unitsAgo == 1 ? " minuut" : " minuten");
+            return String(unitsAgo) + (unitsAgo === 1 ? " minuut" : " minuten");
         } else if (secondsSince < 3600 * 24) {
             return (Math.floor(secondsSince / 3600)) + " uur";
         } else {
             const unitsAgo = Math.floor(secondsSince / (3600 * 24));
-            return String(unitsAgo) + (unitsAgo == 1 ? " dag" : " dagen");
+            return String(unitsAgo) + (unitsAgo === 1 ? " dag" : " dagen");
         }
     } catch {
         return
@@ -27,7 +27,7 @@ export const UserCardPanel = () => {
         const { displayName, email, photoURL } = user.user;
         return (
             <div className="userCard border border-secondary rounded p-3" >
-                <img className="userCardImg border border-2 me-3 border-primary" referrerPolicy="no-referrer" src={photoURL} />
+                <img className="userCardImg border border-2 me-3 border-primary" referrerPolicy="no-referrer" src={photoURL} alt="Profielfoto" />
                 <span>
                     <p className="text fw-medium fs-5 p-0 m-0">
                         {displayName}
@@ -46,7 +46,7 @@ export const UserCardPanel = () => {
 
         return (
             <div className="userCard border border-secondary rounded p-3" >
-                <img className={"userCardImg border border-2 me-3 " + (isOnline ? "border-primary" : "border-secondary")} referrerPolicy="no-referrer" src={photoURL} />
+                <img className={"userCardImg border border-2 me-3 " + (isOnline ? "border-primary" : "border-secondary")} referrerPolicy="no-referrer" src={photoURL} alt="Profielfoto" />
                 <span>
                     <p className="text fw-medium fs-5 p-0 m-0">
                         {displayName}
@@ -60,7 +60,7 @@ export const UserCardPanel = () => {
     }
 
     const [userEntries] = useCollectionData(collection(db, "users"));
-    const currentUser = auth.currentUser;
+    const [currentUser] = useAuthState(auth);
 
     return (
         <div>
@@ -81,6 +81,7 @@ export const UserCardPanel = () => {
                 if (!currentUser || userEntry.displayName !== currentUser.displayName) {
                     return <UserCard user={userEntry} />
                 }
+                return null
             })}
         </div>
     )

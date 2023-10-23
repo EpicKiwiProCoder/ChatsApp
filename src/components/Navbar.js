@@ -1,6 +1,24 @@
 import logo from '../assets/logo.png';
+import { currentPage, setCurrentPage } from '../index';
+
+const pageNames = [
+    "Stuur een bericht",
+    "Hoe is deze website gemaakt?",
+    "Wat is een front-end framework?",
+    "Wat is een back-end?",
+    "Hoe deze website voldoet aan de eisen"
+]
+
+const NavbarLink = (pageName, pageNumber) => {
+    return (
+        <li className="nav-item">
+            <a onClick={setCurrentPage(pageNumber)} href="javascript:void(0)" className="nav-link text-end fs-5">{pageName}</a>
+        </li>
+    )
+}
 
 export const Navbar = () => {
+    console.log(currentPage);
     return (
         <nav className="navbar navbar-dark bg-dark">
             <div className="container">
@@ -14,18 +32,14 @@ export const Navbar = () => {
 
                 <div className="collapse navbar-collapse" id="collapseTarget">
                     <ul className="navbar-nav">
-                        <li className="nav-item">
-                            <a href="" className="nav-link text-bg-dark text-end fs-5">Berichten</a>
-                        </li>
-                        <li className="nav-item">
-                            <a href="" className="nav-link text-bg-dark text-end fs-5">Over deze website</a>
-                        </li>
-                        <li className="nav-item">
-                            <a href="" className="nav-link text-bg-dark text-end fs-5">Hoe werkt het?</a>
-                        </li>
+                        {pageNames.map((pageName, pageIndex) => (
+                            <li className="nav-item">
+                                <a onClick={() => setCurrentPage(pageIndex)} href="javascript:void(0)" className={"nav-link text-end fs-5 " + (currentPage === pageIndex ? "active" : null)}>{pageName}</a>
+                            </li>
+                        ))}
                     </ul>
                 </div>
             </div>
-        </nav>
+        </nav >
     )
 }

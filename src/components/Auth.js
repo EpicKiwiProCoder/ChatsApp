@@ -1,4 +1,4 @@
-import { auth, provider, db } from "./firebaseConfig.js"
+import { auth, provider, db } from "./FirebaseConfig.js"
 import { signInWithPopup } from "firebase/auth"
 import 'firebase/compat/firestore';
 import { doc, setDoc, updateDoc } from "firebase/firestore";
@@ -6,18 +6,23 @@ import { serverTimestamp } from "firebase/firestore";
 
 export const SignIn = () => {
     const signInGoogle = async () => {
-        await signInWithPopup(auth, provider);
+        try {
+            await signInWithPopup(auth, provider);
 
-        const { uid, photoURL, displayName, email } = auth.currentUser;
+            const { uid, photoURL, displayName, email } = auth.currentUser;
 
-        const docRef = doc(db, "users", uid);
-        await setDoc(docRef, {
-            displayName: displayName,
-            photoURL: photoURL,
-            email: email,
-            isOnline: true,
-            lastOnline: serverTimestamp()
-        });
+            const docRef = doc(db, "users", uid);
+            await setDoc(docRef, {
+                displayName: displayName,
+                photoURL: photoURL,
+                email: email,
+                isOnline: true,
+                lastOnline: serverTimestamp()
+            });
+        } catch {
+            alert("Er is een error ontstaan bij het inloggen met google")
+        }
+
     }
 
     return (

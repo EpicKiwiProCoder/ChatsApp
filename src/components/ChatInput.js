@@ -1,17 +1,20 @@
 import { useState } from "react";
-import { db, auth } from "./firebaseConfig";
+import { db, auth } from "./FirebaseConfig";
 import { collection, serverTimestamp, addDoc } from "firebase/firestore";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 export const ChatInput = () => {
+    const [currentUser] = useAuthState(auth);
+
     const SendChat = async (event) => {
         event.preventDefault();
 
-        if (!auth.currentUser) {
+        if (!currentUser) {
             alert("Log eerst in voordat je een bericht kunt versturen");
             return;
         }
 
-        const { uid, displayName, photoURL } = auth.currentUser;
+        const { uid, displayName, photoURL } = currentUser;
 
         const messagesRef = collection(db, "messages");
         await addDoc(messagesRef, {
@@ -28,19 +31,17 @@ export const ChatInput = () => {
     const [chatContent, setChatContent] = useState("");
 
     return (
-        <div>
-            <form className="input-group" onSubmit={SendChat}>
-                <input type="text"
-                    value={chatContent} onChange={(e) => setChatContent(e.target.value)}
-                    className="form-control" placeholder="Stuur een bericht" required
+        <form className="input-group" onSubmit={SendChat}>
+            <input type="text"
+                value={chatContent} onChange={(e) => setChatContent(e.target.value)}
+                className="form-control border-primary" placeholder="Stuur een bericht" required
+            />
+            <div className="input-group-append">
+                <input type="submit" className={"btn btn-lg " + (currentUser ? "btn-outline-primary" : "btn-outline-danger")}
+                    value="Versturen"
+                    style={{ borderTopLeftRadius: "0px", borderBottomLeftRadius: "0px" }}
                 />
-                <div className="input-group-append">
-                    <input type="submit" className={"btn btn-lg " + (auth.currentUser ? "btn-outline-primary" : "btn-outline-danger")}
-                        value="Versturen"
-                        style={{ borderTopLeftRadius: "0px", borderBottomLeftRadius: "0px" }}
-                    />
-                </div>
-            </form>
-        </div>
+            </div>
+        </form>
     )
 }
