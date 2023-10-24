@@ -2,7 +2,7 @@ import { Navbar } from "../components/Navbar"
 
 export const BackendPage = () => {
     return (
-        <div className="How">
+        <div className="Backend">
             <Navbar />
             <div className="row">
                 <div className="col-4"></div>

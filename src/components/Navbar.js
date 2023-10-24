@@ -3,24 +3,16 @@ import { currentPage, setCurrentPage } from '../index';
 
 const pageNames = [
     "Stuur een bericht",
-    "Hoe is deze website gemaakt?",
+    "Hoe deze website is gemaakt",
     "Wat is een front-end framework?",
     "Wat is een back-end?",
     "Hoe deze website voldoet aan de eisen"
 ]
 
-const NavbarLink = (pageName, pageNumber) => {
-    return (
-        <li className="nav-item">
-            <a onClick={setCurrentPage(pageNumber)} href="javascript:void(0)" className="nav-link text-end fs-5">{pageName}</a>
-        </li>
-    )
-}
-
 export const Navbar = () => {
     console.log(currentPage);
     return (
-        <nav className="navbar navbar-dark bg-dark">
+        <nav className="navbar sticky-top navbar-dark bg-dark">
             <div className="container">
                 <a href="/" className="">
                     <img src={logo} alt="Chats App" />

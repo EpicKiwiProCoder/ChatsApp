@@ -5,16 +5,16 @@ import { UserCardPanel } from '../components/UserCardPanel';
 import { ChatPanel } from '../components/ChatPanel'
 import { Navbar } from '../components/Navbar';
 
-function App() {
+export const App = () => {
   return (
     <div className="App">
       <Navbar />
       <div className="container">
         <div className="row">
-          <div className="col-5 border-start border-end border-secondary border-2 p-5 pt-3">
+          <div className="col-5 border-start border-end border-secondary border-2 p-5 pt-3 mt-4">
             <UserCardPanel />
           </div>
-          <div className="col-7 border-end border-secondary border-2 p-5 pt-3">
+          <div className="col-7 border-end border-secondary border-2 p-5 pt-3 mt-4">
             <div className="row">
               <ChatPanel />
             </div>
@@ -29,5 +29,3 @@ function App() {
     </div >
   );
 }
-
-export default App;

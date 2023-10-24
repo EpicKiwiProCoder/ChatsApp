@@ -1,12 +1,17 @@
 import React from 'react';
-import { useState } from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './pages/App';
+import { useState } from 'react';
 
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min";
+
+import { App } from './pages/App';
 import { HowPage } from './pages/How';
 import { FrontendPage } from './pages/Frontend';
 import { BackendPage } from './pages/Backend';
 import { EisenPage } from './pages/Eisen';
+
+
 
 let currentPage; let setCurrentPage;
 
