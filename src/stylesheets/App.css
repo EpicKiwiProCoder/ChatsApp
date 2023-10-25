@@ -9,9 +9,6 @@
     display:flex;
     justify-content: left;
 }
-/* .message > span{
-    margin: 5px 20px 5px 20px;
-} */
 .message > span > img {
     width: 42px;
     border-radius: 50%;
@@ -26,6 +23,7 @@
     margin:0;
     padding:0;
 }
+
 
 
 .userCardImg {

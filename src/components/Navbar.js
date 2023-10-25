@@ -6,15 +6,15 @@ const pageNames = [
     "Hoe deze website is gemaakt",
     "Wat is een front-end framework?",
     "Wat is een back-end?",
-    "Hoe deze website voldoet aan de eisen"
+    "Hoe deze website de eisen verwerkt"
 ]
 
 export const Navbar = () => {
-    console.log(currentPage);
     return (
         <nav className="navbar sticky-top navbar-dark bg-dark">
             <div className="container">
-                <a href="/" className="">
+                {/* eslint-disable-next-line */}
+                <a onClick={() => setCurrentPage(0)} href="javascript:void(0)" className="">
                     <img src={logo} alt="Chats App" />
                 </a>
 
@@ -26,6 +26,7 @@ export const Navbar = () => {
                     <ul className="navbar-nav">
                         {pageNames.map((pageName, pageIndex) => (
                             <li className="nav-item">
+                                {/* eslint-disable-next-line */}
                                 <a onClick={() => setCurrentPage(pageIndex)} href="javascript:void(0)" className={"nav-link text-end fs-5 " + (currentPage === pageIndex ? "active" : null)}>{pageName}</a>
                             </li>
                         ))}
