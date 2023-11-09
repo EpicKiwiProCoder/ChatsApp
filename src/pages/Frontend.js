@@ -17,7 +17,7 @@ export const FrontendPage = () => {
                             <div className="h2">De verschillen tussen statische HTML en front-end frameworks</div>
                             <p>Statische HTML en front-end frameworks zijn twee verschillende benaderingen voor het ontwikkelen van de gebruikersinterface van een website of webtoepassing. Het belangrijkste verschil hierbij ligt in de manier waarop een html pagina wordt gegenereerd.</p>
 
-                            <div className="h4">statische HTML</div>
+                            <div className="h4">Statische HTML</div>
                             <p>Bij statische HTML word er door de webbrowser een request gestuurd naar een hostingprovider voor een bepaalde webpagina, de URL zal er dan ongeveer zo uit zien <strong>Mijnwebsite.nl/pagina2.html</strong>. pagina2.html is in dat geval een statisch HTML bestand met een bepaalde inhoud die al in de server is gegenereerd.</p>
 
                             <div className="h4">Een front-end framework</div>

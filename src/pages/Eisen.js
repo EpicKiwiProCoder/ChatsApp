@@ -33,7 +33,7 @@ export const EisenPage = () => {
                             <h1 className="display-4">Hoe deze website de eisen verwerkt</h1>
 
                             <div className="h2">Gebruik Chat-GPT</div>
-                            <p>Deze website bevat nergens code gegenereerd met Chat-GPT</p>
+                            <p>Deze website bevat nergens code gegenereerd met Chat-GPT.</p>
 
                             <div className="h2">Usability</div>
                             <ol class="list-group list-group-numbered">
