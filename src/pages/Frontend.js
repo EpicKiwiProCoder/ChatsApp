@@ -1,5 +1,6 @@
-import { Navbar } from "../components/Navbar"
 import "../stylesheets/Standard.css"
+
+import { Navbar } from "../components/Navbar"
 
 export const FrontendPage = () => {
     return (

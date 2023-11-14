@@ -1,10 +1,11 @@
+import "../stylesheets/Standard.css"
+
 import { Navbar } from "../components/Navbar"
 
 import reactLogo from "../assets/reactLogo.png"
 import firebaseLogo from "../assets/firebaseLogo.png"
 import sqlLogo from "../assets/sqlLogo.png"
 import vscodeLogo from "../assets/vscodeLogo.png"
-import "../stylesheets/Standard.css"
 
 export const HowPage = () => {
     return (

@@ -1,4 +1,7 @@
 import { useState } from "react";
+
+import "../stylesheets/Standard.css"
+
 import { Navbar } from "../components/Navbar"
 
 export const EisenPage = () => {
@@ -90,8 +93,14 @@ export const EisenPage = () => {
                                 </li>
                             </ol>
 
-                            <div className="h4 text-center mt-5">Gemaakt door:</div>
-                            <div className="text-center"><span className="fs-1 fw-bold font-monospace" onMouseOver={() => cycleText("CLEMENS RETRA ")}>{textContent}</span></div>
+
+                            <div className="text-center">
+                                <div className="h4 mt-5">Gemaakt door:</div>
+                                <span className="fs-1 fw-bold font-monospace" onMouseOver={() => cycleText("CLEMENS RETRA ")}>{textContent}</span>
+                                <div className="mt-2">
+                                    <a target="_blank" href="https://github.com/EpicKiwiProCoder/" className="fa fa-github"></a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div className="col-2"></div>

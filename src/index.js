@@ -11,8 +11,6 @@ import { FrontendPage } from './pages/Frontend';
 import { BackendPage } from './pages/Backend';
 import { EisenPage } from './pages/Eisen';
 
-
-
 let currentPage; let setCurrentPage;
 
 const PageRenderer = () => {

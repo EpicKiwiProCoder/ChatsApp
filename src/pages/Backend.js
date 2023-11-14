@@ -1,3 +1,5 @@
+import "../stylesheets/Standard.css"
+
 import { Navbar } from "../components/Navbar"
 
 import Node from "../assets/carousel/Node.png"
