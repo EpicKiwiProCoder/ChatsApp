@@ -2,7 +2,9 @@
 
 # # dependencies
 /node_modules/*
+/node_modules/!.gitignore
 /src/secrets/*
+/src/secrets/!.gitignore
 # /.pnp
 # .pnp.js
 
