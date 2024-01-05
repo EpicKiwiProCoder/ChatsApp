@@ -39,7 +39,7 @@ export const ChatInput = () => {
             <div className="input-group-append">
                 <input type="submit" className={"btn btn-lg " + (currentUser ? "btn-outline-primary" : "btn-outline-danger")}
                     value="Versturen"
-                    style={{ borderTopLeftRadius: "0px", borderBottomLeftRadius: "0px", background: "white" }}
+                    style={{ borderTopLeftRadius: "0px", borderBottomLeftRadius: "0px" }}
                 />
             </div>
         </form>
